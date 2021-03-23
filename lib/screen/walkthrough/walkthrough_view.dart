@@ -19,7 +19,7 @@ List<Map<String, String>> sliderData = [
 ];
 
 class WalkthroughScreen extends StatefulWidget {
-  static String routeName = "/walkthrough";
+  static String route = "/walkthrough";
 
   _WalkthroughScreenState createState() => _WalkthroughScreenState();
 }
