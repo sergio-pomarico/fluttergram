@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/screen/walkthrough/walkthrough_view.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
-import 'package:fluttergram/ui_shared/theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,9 +28,8 @@ class MyApp extends StatelessWidget {
             bodyText1: TextStyle(color: textColor),
             bodyText2: TextStyle(color: textColor)),
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: WalkthroughScreen(),
     );
   }
 }
