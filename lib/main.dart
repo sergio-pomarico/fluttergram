@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/ui_shared/constants.dart';
+import 'package:fluttergram/ui_shared/theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Fluttergram',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -20,6 +22,12 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'Multi',
+        textTheme: TextTheme(
+            bodyText1: TextStyle(color: textColor),
+            bodyText2: TextStyle(color: textColor)),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
