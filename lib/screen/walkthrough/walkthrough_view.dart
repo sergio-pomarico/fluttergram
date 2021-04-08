@@ -3,6 +3,10 @@ import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/images.dart';
 
+import 'package:fluttergram/widgets/button.dart';
+
+import '../auth/login_view.dart';
+
 List<Map<String, String>> sliderData = [
   {
     "text": "Welcome to Fluttergram",
@@ -13,8 +17,8 @@ List<Map<String, String>> sliderData = [
     "image": "assets/images/vacations.svg"
   },
   {
-    "text": "Welcome to Fluttergram",
-    "image": "assets/images/friends.svg",
+    "text": "Meet interesting people\n and interact with them",
+    "image": "assets/images/love.svg",
   },
 ];
 
@@ -27,10 +31,15 @@ class WalkthroughScreen extends StatefulWidget {
 class _WalkthroughScreenState extends State<WalkthroughScreen> {
   int currentPage = 0;
 
+  void goToLogin() {
+    Navigator.pushNamed(context, LoginScreen.route);
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      key: Key('walkthroughScreen_view'),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -60,11 +69,12 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
                     Text(
                       sliderData[index]['text'],
                       textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 18),
                     ),
-                    Spacer(flex: 2),
+                    Spacer(flex: 1),
                     ImageFactory.svg(
                       sliderData[index]['image'],
-                      height: getProportionateScreenHeight(320),
+                      height: getProportionateScreenHeight(240),
                       width: getProportionateScreenWidth(320),
                     ),
                     SizedBox(
@@ -78,7 +88,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
               flex: 1,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(20),
+                  horizontal: getProportionateScreenWidth(24),
                 ),
                 child: Column(
                   children: <Widget>[
@@ -90,34 +100,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
                       ),
                     ),
                     Spacer(flex: 1),
-                    Expanded(
-                      flex: 1,
-                      child: LayoutBuilder(
-                        builder: (BuildContext context,
-                                BoxConstraints constraints) =>
-                            SizedBox(
-                          height: 60,
-                          width: constraints.maxWidth,
-                          child: TextButton(
-                            child: Text(
-                              "Continue",
-                              style: TextStyle(
-                                fontSize: getProportionateScreenWidth(18),
-                                color: Colors.white,
-                              ),
-                            ),
-                            style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                backgroundColor: primaryColor),
-                            onPressed: () {
-                              //Navigator.pushNamed(context, SignInScreen.routeName);
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
+                    Button(text: "Next", onPress: goToLogin),
                     Spacer(),
                   ],
                 ),

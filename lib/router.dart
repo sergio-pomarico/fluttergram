@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './screen/walkthrough/walkthrough_view.dart';
+import './screen/auth/login_view.dart';
 
 class UIRouter {
   static String initialRoute = WalkthroughScreen.route;
@@ -10,6 +11,10 @@ class UIRouter {
       WalkthroughScreen.route: MaterialPageRoute<dynamic>(
         settings: RouteSettings(name: WalkthroughScreen.route),
         builder: (_) => WalkthroughScreen(),
+      ),
+      LoginScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: LoginScreen.route),
+        builder: (_) => LoginScreen(),
       ),
     };
 
