@@ -4,28 +4,20 @@ import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
 
 import 'package:fluttergram/widgets/input/input.dart';
-import 'package:fluttergram/widgets/social_button.dart';
 import 'package:fluttergram/widgets/input/validator.dart';
 import 'package:fluttergram/widgets/button.dart';
 
-import 'package:fluttergram/screen/auth/forgot_password.dart';
-import 'package:fluttergram/screen/auth/signin_view.dart';
-
-class LoginScreen extends StatelessWidget {
-  static String route = "/login";
-
-  void goTo(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
-  }
+class ForgotPasswordScreen extends StatelessWidget {
+  static String route = "/forgot_password";
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      key: Key('login_view'),
+      key: Key('forgot_password_view'),
       appBar: AppBar(
         title: Text(
-          "Login",
+          "Forgot Password",
           textAlign: TextAlign.center,
         ),
       ),
@@ -38,9 +30,9 @@ class LoginScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: SizeConfig.screenHeight * 0.04),
+              SizedBox(height: SizeConfig.screenHeight * 0.05),
               Text(
-                "Welcome Back",
+                "Forgot Password",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: getProportionateScreenWidth(28),
@@ -48,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                "Sign in with your email and password  \nor continue with social media",
+                "Please enter your email and we will send \nyou a link to return to your account",
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.05),
@@ -68,60 +60,10 @@ class LoginScreen extends StatelessWidget {
                         ],
                         value,
                       ),
+                      error: null,
                     ),
-                    SizedBox(height: getProportionateScreenHeight(30)),
-                    Input(
-                      label: 'Password',
-                      placeholder: 'Enter your password',
-                      controller: TextEditingController(),
-                      isPassword: true,
-                      icon: Icons.lock_outline,
-                    ),
-                    SizedBox(height: getProportionateScreenHeight(30)),
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: false,
-                          activeColor: primaryColor,
-                          onChanged: (value) {},
-                        ),
-                        Text("Remember me"),
-                        Spacer(),
-                        InkWell(
-                          onTap: () =>
-                              goTo(context, ForgotPasswordScreen.route),
-                          child: Text(
-                            "Forgot Password",
-                            style:
-                                TextStyle(decoration: TextDecoration.underline),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: getProportionateScreenHeight(20)),
-                    Button(text: 'Sign In', onPress: () {}),
-                    SizedBox(
-                      height: getProportionateScreenHeight(20),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        SocialButton(
-                          icon: "assets/icons/google.svg",
-                          onPress: () {},
-                        ),
-                        SocialButton(
-                          icon: "assets/icons/facebook.svg",
-                          onPress: () {},
-                        ),
-                        SocialButton(
-                          icon: "assets/icons/twitter.svg",
-                          onPress: () {},
-                        ),
-                      ],
-                    ),
+                    SizedBox(height: SizeConfig.screenHeight * 0.15),
+                    Button(text: 'Send', onPress: () {}),
                     SizedBox(height: getProportionateScreenHeight(20)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -132,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                               fontSize: getProportionateScreenWidth(16)),
                         ),
                         InkWell(
-                          onTap: () => goTo(context, SigninScreen.route),
+                          onTap: () {},
                           child: Text(
                             "Sign Up",
                             style: TextStyle(
