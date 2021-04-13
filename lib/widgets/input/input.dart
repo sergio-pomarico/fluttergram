@@ -10,7 +10,6 @@ class Input extends StatefulWidget {
       this.label,
       this.placeholder,
       this.error,
-      this.errorPlainText,
       this.icon,
       this.node,
       this.enabled = true,
@@ -30,7 +29,6 @@ class Input extends StatefulWidget {
   final String label;
   final String placeholder;
   final String error;
-  final String errorPlainText;
   final IconData icon;
   final Widget suffix;
   final FocusNode node;

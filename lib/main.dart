@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergram/ui_shared/theme.dart';
 
-import './router.dart';
+import 'routes/router.dart';
 
 void main() {
   runApp(MyApp());

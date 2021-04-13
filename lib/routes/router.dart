@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-import './screen/walkthrough/walkthrough_view.dart';
-import './screen/auth/login_view.dart';
+import 'package:fluttergram/screen/walkthrough/walkthrough_view.dart';
+import 'package:fluttergram/screen/auth/login_view.dart';
+import 'package:fluttergram/screen/auth/forgot_password.dart';
+import 'package:fluttergram/screen/auth/signin_view.dart';
+import 'package:fluttergram/screen/auth/complete_info_view.dart';
 
 class UIRouter {
   static String initialRoute = WalkthroughScreen.route;
@@ -15,6 +18,18 @@ class UIRouter {
       LoginScreen.route: MaterialPageRoute<dynamic>(
         settings: RouteSettings(name: LoginScreen.route),
         builder: (_) => LoginScreen(),
+      ),
+      ForgotPasswordScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: ForgotPasswordScreen.route),
+        builder: (_) => ForgotPasswordScreen(),
+      ),
+      SigninScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: SigninScreen.route),
+        builder: (_) => SigninScreen(),
+      ),
+      CompleteUserInfoScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: CompleteUserInfoScreen.route),
+        builder: (_) => CompleteUserInfoScreen(),
       ),
     };
 
