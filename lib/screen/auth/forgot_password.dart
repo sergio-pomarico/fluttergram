@@ -7,8 +7,37 @@ import 'package:fluttergram/widgets/input/input.dart';
 import 'package:fluttergram/widgets/input/validator.dart';
 import 'package:fluttergram/widgets/button.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+import 'package:fluttergram/screen/auth/signin_view.dart';
+
+class ForgotPasswordScreen extends StatefulWidget {
   static String route = "/forgot_password";
+
+  _ForgotPasswordState createState() => _ForgotPasswordState();
+}
+
+class _ForgotPasswordState extends State<ForgotPasswordScreen> {
+  TextEditingController email = TextEditingController();
+  String emailError;
+
+  void goTo(BuildContext context, String routeName) {
+    Navigator.pushNamed(context, routeName);
+  }
+
+  void validateEmail(String _) {
+    String error = InputValidator.validate(<InputValidatorType>[
+      InputValidatorType.empty,
+      InputValidatorType.email
+    ], email.text);
+    if (error != null) {
+      setState(() {
+        emailError = error;
+      });
+    } else {
+      setState(() {
+        emailError = null;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +80,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                     Input(
                       label: 'Email',
                       placeholder: 'Enter your email',
-                      controller: TextEditingController(),
+                      controller: email,
                       icon: Icons.email_outlined,
-                      validator: (String value) => InputValidator.validate(
-                        <InputValidatorType>[
-                          InputValidatorType.empty,
-                          InputValidatorType.email
-                        ],
-                        value,
-                      ),
-                      error: null,
+                      error: emailError,
                     ),
                     SizedBox(height: SizeConfig.screenHeight * 0.15),
                     Button(text: 'Send', onPress: () {}),
@@ -74,7 +96,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                               fontSize: getProportionateScreenWidth(16)),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () => goTo(context, SigninScreen.route),
                           child: Text(
                             "Sign Up",
                             style: TextStyle(

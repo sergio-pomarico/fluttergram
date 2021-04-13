@@ -11,11 +11,43 @@ import 'package:fluttergram/widgets/button.dart';
 import 'package:fluttergram/screen/auth/forgot_password.dart';
 import 'package:fluttergram/screen/auth/signin_view.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static String route = "/login";
+
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<LoginScreen> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  String emailError;
+  String passwordError;
 
   void goTo(BuildContext context, String routeName) {
     Navigator.pushNamed(context, routeName);
+  }
+
+  void validateEmail(String _) {
+    String error = InputValidator.validate(<InputValidatorType>[
+      InputValidatorType.empty,
+      InputValidatorType.email
+    ], email.text);
+    if (error != null) {
+      setState(() {
+        emailError = error;
+      });
+    } else {
+      setState(() {
+        emailError = null;
+      });
+    }
+  }
+
+  void validatePassword(String _) {
+    setState(() {
+      passwordError =
+          password.text.length < 6 ? 'the password is too short' : null;
+    });
   }
 
   @override
@@ -59,23 +91,20 @@ class LoginScreen extends StatelessWidget {
                     Input(
                       label: 'Email',
                       placeholder: 'Enter your email',
-                      controller: TextEditingController(),
+                      controller: email,
                       icon: Icons.email_outlined,
-                      validator: (String value) => InputValidator.validate(
-                        <InputValidatorType>[
-                          InputValidatorType.empty,
-                          InputValidatorType.email
-                        ],
-                        value,
-                      ),
+                      onChange: validateEmail,
+                      error: emailError,
                     ),
                     SizedBox(height: getProportionateScreenHeight(30)),
                     Input(
                       label: 'Password',
                       placeholder: 'Enter your password',
-                      controller: TextEditingController(),
+                      controller: password,
                       isPassword: true,
                       icon: Icons.lock_outline,
+                      error: passwordError,
+                      onChange: validatePassword,
                     ),
                     SizedBox(height: getProportionateScreenHeight(30)),
                     Row(

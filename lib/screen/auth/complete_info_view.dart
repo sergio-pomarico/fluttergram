@@ -56,12 +56,6 @@ class CompleteUserInfoScreen extends StatelessWidget {
                         label: 'Name',
                         placeholder: 'Enter your email',
                         controller: TextEditingController(),
-                        validator: (String value) => InputValidator.validate(
-                          <InputValidatorType>[
-                            InputValidatorType.empty,
-                          ],
-                          value,
-                        ),
                         error: null,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
@@ -69,36 +63,18 @@ class CompleteUserInfoScreen extends StatelessWidget {
                         label: 'Lastname',
                         placeholder: 'Enter your lastame',
                         controller: TextEditingController(),
-                        validator: (String value) => InputValidator.validate(
-                          <InputValidatorType>[
-                            InputValidatorType.empty,
-                          ],
-                          value,
-                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Input(
                         label: 'Phone',
                         placeholder: 'Enter your phone',
                         controller: TextEditingController(),
-                        validator: (String value) => InputValidator.validate(
-                          <InputValidatorType>[
-                            InputValidatorType.empty,
-                          ],
-                          value,
-                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Input(
                         label: 'Address',
                         placeholder: 'Enter your address',
                         controller: TextEditingController(),
-                        validator: (String value) => InputValidator.validate(
-                          <InputValidatorType>[
-                            InputValidatorType.empty,
-                          ],
-                          value,
-                        ),
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Button(text: 'Continue', onPress: () {}),

@@ -17,8 +17,8 @@ class Input extends StatefulWidget {
       this.autofocus = false,
       this.isPassword = false,
       this.enableSuggestions = false,
+      this.keyboardType = TextInputType.text,
       this.onChange,
-      this.validator,
       this.formatters,
       this.type,
       this.suffix,
@@ -38,7 +38,7 @@ class Input extends StatefulWidget {
   final bool autofocus;
   final bool isPassword;
   final bool enableSuggestions;
-  final String Function(String) validator;
+  final TextInputType keyboardType;
   final void Function(String) onChange;
   final List<TextInputFormatter> formatters;
   final TextInputType type;
@@ -103,7 +103,7 @@ class InputState extends State<Input> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: widget.keyboardType,
       focusNode: focusNode,
       controller: widget.controller,
       enabled: widget.enabled,

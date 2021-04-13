@@ -60,13 +60,6 @@ class SigninScreen extends StatelessWidget {
                         placeholder: 'Enter your email',
                         controller: TextEditingController(),
                         icon: Icons.email_outlined,
-                        validator: (String value) => InputValidator.validate(
-                          <InputValidatorType>[
-                            InputValidatorType.empty,
-                            InputValidatorType.email
-                          ],
-                          value,
-                        ),
                         error: null,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
