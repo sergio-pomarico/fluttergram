@@ -7,7 +7,7 @@ import 'package:fluttergram/widgets/input/validator.dart';
 import 'package:fluttergram/widgets/button.dart';
 
 class CompleteUserInfoScreen extends StatelessWidget {
-  static String route = "/signIn";
+  static String route = "/complete_info";
 
   void goTo(BuildContext context, String routeName) {
     Navigator.pushNamed(context, routeName);
@@ -35,7 +35,7 @@ class CompleteUserInfoScreen extends StatelessWidget {
             children: <Widget>[
               SizedBox(height: SizeConfig.screenHeight * 0.04),
               Text(
-                "Register Account",
+                "Complete Profile",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: getProportionateScreenWidth(28),
@@ -43,7 +43,7 @@ class CompleteUserInfoScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                "Complete your details or continue \nwith social media",
+                "Complete your details",
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.05),
