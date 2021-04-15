@@ -6,11 +6,55 @@ import 'package:fluttergram/widgets/input/input.dart';
 import 'package:fluttergram/widgets/input/validator.dart';
 import 'package:fluttergram/widgets/button.dart';
 
-class CompleteUserInfoScreen extends StatelessWidget {
+class CompleteUserInfoScreen extends StatefulWidget {
   static String route = "/complete_info";
 
   void goTo(BuildContext context, String routeName) {
     Navigator.pushNamed(context, routeName);
+  }
+
+  _CompleteUserInfoState createState() => _CompleteUserInfoState();
+}
+
+class _CompleteUserInfoState extends State<CompleteUserInfoScreen> {
+  TextEditingController name = TextEditingController();
+  TextEditingController lastname = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController address = TextEditingController();
+
+  String nameError;
+  String lastnameError;
+  String phoneError;
+  String addressError;
+
+  void validateName(String _) {
+    setState(() {
+      nameError = (name.text.length < 3 && name.text.length > 50)
+          ? 'the name must be a minimum of 3 characters and a maximum of 60'
+          : null;
+    });
+  }
+
+  void validateLastName(String _) {
+    setState(() {
+      nameError = (lastname.text.length < 3 && lastname.text.length > 50)
+          ? 'the lastname must be a minimum of 3 characters and a maximum of 60'
+          : null;
+    });
+  }
+
+  void validatePhone(String _) {
+    setState(() {
+      nameError = (phone.text.length < 7 && phone.text.length > 10)
+          ? 'invalid phone number'
+          : null;
+    });
+  }
+
+  void validateAddress(String _) {
+    setState(() {
+      nameError = address.text.isEmpty ? 'address is required' : null;
+    });
   }
 
   @override
@@ -55,26 +99,32 @@ class CompleteUserInfoScreen extends StatelessWidget {
                       Input(
                         label: 'Name',
                         placeholder: 'Enter your email',
-                        controller: TextEditingController(),
-                        error: null,
+                        controller: name,
+                        error: nameError,
+                        onChange: validateName,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Input(
                         label: 'Lastname',
                         placeholder: 'Enter your lastame',
-                        controller: TextEditingController(),
+                        controller: lastname,
+                        error: lastnameError,
+                        onChange: validateLastName,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Input(
                         label: 'Phone',
                         placeholder: 'Enter your phone',
-                        controller: TextEditingController(),
+                        controller: phone,
+                        error: phoneError,
+                        onChange: validatePhone,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Input(
                         label: 'Address',
                         placeholder: 'Enter your address',
-                        controller: TextEditingController(),
+                        controller: address,
+                        error: addressError,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Button(text: 'Continue', onPress: () {}),

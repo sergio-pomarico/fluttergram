@@ -9,11 +9,62 @@ import 'package:fluttergram/widgets/button.dart';
 
 import 'package:fluttergram/screen/auth/complete_info_view.dart';
 
-class SigninScreen extends StatelessWidget {
+class SigninScreen extends StatefulWidget {
   static String route = "/signIn";
+
+  _SigninState createState() => _SigninState();
+}
+
+class _SigninState extends State<SigninScreen> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
+
+  String emailError;
+  String passwordError;
+  String comfirmPasswordError;
 
   void goTo(BuildContext context, String routeName) {
     Navigator.pushNamed(context, routeName);
+  }
+
+  void validateEmail(String _) {
+    String error = InputValidator.validate(<InputValidatorType>[
+      InputValidatorType.empty,
+      InputValidatorType.email
+    ], email.text);
+    if (error != null) {
+      setState(() {
+        emailError = error;
+      });
+    } else {
+      setState(() {
+        emailError = null;
+      });
+    }
+  }
+
+  void validatePassword(String _) {
+    setState(() {
+      passwordError =
+          password.text.length < 6 ? 'the password is too short' : null;
+    });
+  }
+
+  void validateComfirmPassword(String _) {
+    if (confirmPassword.text.length < 6) {
+      setState(() {
+        comfirmPasswordError = 'the password is too short';
+      });
+    } else if (password.text != confirmPassword.text) {
+      setState(() {
+        comfirmPasswordError = 'passwords must match';
+      });
+    } else {
+      setState(() {
+        comfirmPasswordError = null;
+      });
+    }
   }
 
   @override
@@ -58,26 +109,30 @@ class SigninScreen extends StatelessWidget {
                       Input(
                         label: 'Email',
                         placeholder: 'Enter your email',
-                        controller: TextEditingController(),
+                        controller: email,
                         icon: Icons.email_outlined,
-                        error: null,
+                        error: emailError,
+                        onChange: validateEmail,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Input(
                         label: 'Password',
                         placeholder: 'Enter your password',
-                        controller: TextEditingController(),
+                        controller: password,
                         isPassword: true,
                         icon: Icons.lock_outline,
-                        error: null,
+                        error: passwordError,
+                        onChange: validatePassword,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Input(
                         label: 'Confirm Password',
                         placeholder: 'Repeat your password',
-                        controller: TextEditingController(),
+                        controller: confirmPassword,
                         isPassword: true,
                         icon: Icons.lock_outline,
+                        error: comfirmPasswordError,
+                        onChange: validateComfirmPassword,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Button(

@@ -84,7 +84,7 @@ class InputState extends State<Input> {
     widget.onChange(_val);
   }
 
-  InputDecoration getDecorator(BuildContext context) => InputDecoration(
+  InputDecoration getDecorator() => InputDecoration(
         labelText: widget.label,
         labelStyle: TextStyle(
           color: widget.error != null ? Colors.red[200] : textColor,
@@ -111,7 +111,7 @@ class InputState extends State<Input> {
       autofocus: widget.autofocus,
       obscureText: widget.isPassword,
       enableSuggestions: widget.enableSuggestions,
-      decoration: getDecorator(context),
+      decoration: getDecorator(),
       inputFormatters: <TextInputFormatter>[
         ...widget.formatters ?? <TextInputFormatter>[],
         if (widget.type == TextInputType.phone)
