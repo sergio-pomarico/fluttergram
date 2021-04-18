@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fluttergram/widgets/input/input.dart';
 import 'package:fluttergram/widgets/social_button.dart';
@@ -10,6 +11,7 @@ import 'package:fluttergram/widgets/button.dart';
 
 import 'package:fluttergram/screen/auth/forgot_password.dart';
 import 'package:fluttergram/screen/auth/signin_view.dart';
+import 'package:fluttergram/bloc/login/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   static String route = "/login";
@@ -53,6 +55,10 @@ class _LoginState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    //Add bloc provider to consume data
+    final loginBloc = BlocProvider.of<LoginBloc>(context);
+
     return Scaffold(
       key: Key('login_view'),
       appBar: AppBar(
@@ -128,7 +134,12 @@ class _LoginState extends State<LoginScreen> {
                       ],
                     ),
                     SizedBox(height: getProportionateScreenHeight(20)),
-                    Button(text: 'Sign In', onPress: () {}),
+                    Button(
+                      text: 'Sign In',
+                      onPress: () => loginBloc.add(
+                        Login(email: email.text, password: password.text),
+                      ),
+                    ),
                     SizedBox(
                       height: getProportionateScreenHeight(20),
                     ),

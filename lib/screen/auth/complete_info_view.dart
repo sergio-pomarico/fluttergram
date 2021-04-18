@@ -3,7 +3,6 @@ import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
 
 import 'package:fluttergram/widgets/input/input.dart';
-import 'package:fluttergram/widgets/input/validator.dart';
 import 'package:fluttergram/widgets/button.dart';
 
 class CompleteUserInfoScreen extends StatefulWidget {
