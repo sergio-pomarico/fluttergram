@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fluttergram/widgets/input/input.dart';
 import 'package:fluttergram/widgets/social_button.dart';
-import 'package:fluttergram/widgets/input/validator.dart';
+import 'package:fluttergram/helpers/validator.dart';
 import 'package:fluttergram/widgets/button.dart';
 
 import 'package:fluttergram/bloc/login/login_bloc.dart';

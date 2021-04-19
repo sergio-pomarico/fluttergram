@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
-import './validator.dart';
+import 'package:fluttergram/helpers/validator.dart';
 
 class Input extends StatefulWidget {
   Input(
