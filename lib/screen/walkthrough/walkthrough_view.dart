@@ -4,8 +4,9 @@ import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/images.dart';
 
 import 'package:fluttergram/widgets/button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../auth/login_view.dart';
+import 'package:fluttergram/screen/auth/auth_view.dart';
 
 List<Map<String, String>> sliderData = [
   {
@@ -31,7 +32,9 @@ class WalkthroughScreen extends StatefulWidget {
 class _WalkthroughScreenState extends State<WalkthroughScreen> {
   int currentPage = 0;
 
-  void goToLogin() {
+  void goToLogin() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString('walkthrough_viewed', 'true');
     Navigator.pushNamed(context, LoginScreen.route);
   }
 

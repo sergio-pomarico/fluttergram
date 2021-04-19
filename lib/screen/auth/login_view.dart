@@ -1,17 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fluttergram/ui_shared/constants.dart';
-import 'package:fluttergram/ui_shared/size_config.dart';
-import 'package:fluttergram/ui_shared/behavior.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:fluttergram/widgets/input/input.dart';
-import 'package:fluttergram/widgets/social_button.dart';
-import 'package:fluttergram/widgets/input/validator.dart';
-import 'package:fluttergram/widgets/button.dart';
-
-import 'package:fluttergram/screen/auth/forgot_password.dart';
-import 'package:fluttergram/screen/auth/signin_view.dart';
-import 'package:fluttergram/bloc/login/login_bloc.dart';
+part of app.auth;
 
 class LoginScreen extends StatefulWidget {
   static String route = "/login";
@@ -66,6 +53,7 @@ class _LoginState extends State<LoginScreen> {
           "Login",
           textAlign: TextAlign.center,
         ),
+        leading: SizedBox(),
       ),
       body: ScrollConfiguration(
         behavior: NeverGrowthScroll(),

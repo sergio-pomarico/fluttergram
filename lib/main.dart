@@ -5,9 +5,7 @@ import 'package:fluttergram/repository/user_repository.dart';
 import 'package:fluttergram/ui_shared/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:fluttergram/bloc/login/login_bloc.dart';
-import 'package:fluttergram/bloc/auth/auth_bloc.dart';
-
+import 'package:fluttergram/bloc/bloc.dart';
 import 'routes/router.dart';
 
 void main() async {
@@ -34,7 +32,7 @@ class AppState extends StatelessWidget {
         create: (_) => LoginBloc(userRepository),
       ),
       BlocProvider<AuthBloc>(
-        create: (_) => AuthBloc(),
+        create: (_) => AuthBloc(userRepository),
       ),
     ], child: MyApp());
   }

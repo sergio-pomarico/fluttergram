@@ -1,6 +1,11 @@
 part of 'auth_bloc.dart';
 
-@immutable
-abstract class AuthState {}
+class AuthState {
+  final bool authenticated;
+  final User user;
 
-class AuthInitial extends AuthState {}
+  AuthState({
+    this.authenticated = false,
+    this.user,
+  });
+}

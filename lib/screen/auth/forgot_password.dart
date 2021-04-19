@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fluttergram/ui_shared/constants.dart';
-import 'package:fluttergram/ui_shared/size_config.dart';
-import 'package:fluttergram/ui_shared/behavior.dart';
-
-import 'package:fluttergram/widgets/input/input.dart';
-import 'package:fluttergram/widgets/input/validator.dart';
-import 'package:fluttergram/widgets/button.dart';
-
-import 'package:fluttergram/screen/auth/signin_view.dart';
+part of app.auth;
 
 class ForgotPasswordScreen extends StatefulWidget {
   static String route = "/forgot_password";
