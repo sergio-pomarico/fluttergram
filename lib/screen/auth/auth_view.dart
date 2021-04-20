@@ -1,6 +1,7 @@
 library app.auth;
 
 import 'package:flutter/material.dart';
+import 'package:fluttergram/bloc/bloc.dart';
 import 'package:fluttergram/helpers/navigator.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';

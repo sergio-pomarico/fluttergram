@@ -10,13 +10,21 @@ class _SigninState extends State<SigninScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
+  final NavigationService navigator = locator<NavigationService>();
 
   String emailError;
   String passwordError;
   String comfirmPasswordError;
 
-  void goTo(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
+  SigninBloc signInBloc;
+
+  bool get isPopulated =>
+      email.text.isNotEmpty &&
+      password.text.isNotEmpty &&
+      confirmPassword.text.isNotEmpty;
+
+  void goTo(String routeName) {
+    navigator.push(route: routeName);
   }
 
   void validateEmail(String _) {
@@ -56,6 +64,20 @@ class _SigninState extends State<SigninScreen> {
         comfirmPasswordError = null;
       });
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    signInBloc = BlocProvider.of<SigninBloc>(context);
+  }
+
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    confirmPassword.dispose();
+    super.dispose();
   }
 
   @override
@@ -127,11 +149,13 @@ class _SigninState extends State<SigninScreen> {
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
                       Button(
-                          text: 'Continue',
-                          onPress: () => goTo(
-                                context,
-                                CompleteUserInfoScreen.route,
-                              )),
+                        text: 'Continue',
+                        onPress: () => {
+                          signInBloc.add(
+                            SignIn(email: email.text, password: password.text),
+                          ),
+                        },
+                      ),
                       SizedBox(
                         height: getProportionateScreenHeight(40),
                       ),

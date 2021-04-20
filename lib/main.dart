@@ -34,6 +34,9 @@ class AppState extends StatelessWidget {
       BlocProvider<LoginBloc>(
         create: (_) => LoginBloc(userRepository),
       ),
+      BlocProvider<SigninBloc>(
+        create: (_) => SigninBloc(userRepository),
+      ),
     ], child: MyApp());
   }
 }
