@@ -1,4 +1,4 @@
-package com.example.fluttergram
+package co.codeo.fluttergram
 
 import io.flutter.embedding.android.FlutterActivity
 
