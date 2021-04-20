@@ -7,13 +7,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginState extends State<LoginScreen> {
+  final NavigationService navigator = locator<NavigationService>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   String emailError;
   String passwordError;
 
-  void goTo(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
+  LoginBloc loginBloc;
+
+  bool get isPopulated => email.text.isNotEmpty && password.text.isNotEmpty;
+
+  void goTo(String routeName) {
+    navigator.push(route: routeName);
   }
 
   void validateEmail(String _) {
@@ -40,12 +45,21 @@ class _LoginState extends State<LoginScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    loginBloc = BlocProvider.of<LoginBloc>(context);
+  }
+
+  @override
+  void dispose() {
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
-    //Add bloc provider to consume data
-    final loginBloc = BlocProvider.of<LoginBloc>(context);
-
     return Scaffold(
       key: Key('login_view'),
       appBar: AppBar(
@@ -111,8 +125,7 @@ class _LoginState extends State<LoginScreen> {
                         Text("Remember me"),
                         Spacer(),
                         InkWell(
-                          onTap: () =>
-                              goTo(context, ForgotPasswordScreen.route),
+                          onTap: () => goTo(ForgotPasswordScreen.route),
                           child: Text(
                             "Forgot Password",
                             style:
@@ -124,6 +137,7 @@ class _LoginState extends State<LoginScreen> {
                     SizedBox(height: getProportionateScreenHeight(20)),
                     Button(
                       text: 'Sign In',
+                      disable: !isPopulated,
                       onPress: () => loginBloc.add(
                         Login(email: email.text, password: password.text),
                       ),
@@ -160,7 +174,7 @@ class _LoginState extends State<LoginScreen> {
                               fontSize: getProportionateScreenWidth(16)),
                         ),
                         InkWell(
-                          onTap: () => goTo(context, SigninScreen.route),
+                          onTap: () => goTo(SigninScreen.route),
                           child: Text(
                             "Sign Up",
                             style: TextStyle(

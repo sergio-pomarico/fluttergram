@@ -6,11 +6,14 @@ import 'package:fluttergram/ui_shared/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fluttergram/bloc/bloc.dart';
+import 'helpers/navigator.dart';
+import 'locator.dart';
 import 'routes/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupApp();
+  setupLocator();
   runApp(AppState());
 }
 
@@ -31,9 +34,6 @@ class AppState extends StatelessWidget {
       BlocProvider<LoginBloc>(
         create: (_) => LoginBloc(userRepository),
       ),
-      BlocProvider<AuthBloc>(
-        create: (_) => AuthBloc(userRepository),
-      ),
     ], child: MyApp());
   }
 }
@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fluttergram',
       theme: theme(),
+      navigatorKey: locator<NavigationService>().navigatorKey,
       initialRoute: UIRouter.initialRoute,
       onGenerateRoute: UIRouter.generateRoute,
     );

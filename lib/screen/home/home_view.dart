@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:fluttergram/widgets/input/input.dart';
-import 'package:fluttergram/widgets/social_button.dart';
-import 'package:fluttergram/widgets/input/validator.dart';
-import 'package:fluttergram/widgets/button.dart';
-
-import 'package:fluttergram/bloc/login/login_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   static String route = "/login";
@@ -27,35 +18,9 @@ class _HomeState extends State<HomeScreen> {
     Navigator.pushNamed(context, routeName);
   }
 
-  void validateEmail(String _) {
-    String error = InputValidator.validate(<InputValidatorType>[
-      InputValidatorType.empty,
-      InputValidatorType.email
-    ], email.text);
-    if (error != null) {
-      setState(() {
-        emailError = error;
-      });
-    } else {
-      setState(() {
-        emailError = null;
-      });
-    }
-  }
-
-  void validatePassword(String _) {
-    setState(() {
-      passwordError =
-          password.text.length < 6 ? 'the password is too short' : null;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
-    //Add bloc provider to consume data
-    final loginBloc = BlocProvider.of<LoginBloc>(context);
 
     return Scaffold(
       key: Key('home_view'),
@@ -64,6 +29,7 @@ class _HomeState extends State<HomeScreen> {
           "Home",
           textAlign: TextAlign.center,
         ),
+        leading: SizedBox(),
       ),
       body: ScrollConfiguration(
         behavior: NeverGrowthScroll(),

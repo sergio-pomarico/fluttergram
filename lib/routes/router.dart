@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergram/screen/root/root_view.dart';
 
 import 'package:fluttergram/screen/walkthrough/walkthrough_view.dart';
+import 'package:fluttergram/screen/home/home_view.dart';
 import 'package:fluttergram/screen/auth/auth_view.dart';
 
 class UIRouter {
@@ -17,9 +18,13 @@ class UIRouter {
         settings: RouteSettings(name: WalkthroughScreen.route),
         builder: (_) => WalkthroughScreen(),
       ),
-      AuthView.route: MaterialPageRoute<dynamic>(
-        settings: RouteSettings(name: AuthView.route),
-        builder: (_) => AuthView(),
+      AuthScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: AuthScreen.route),
+        builder: (_) => AuthScreen(),
+      ),
+      HomeScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: HomeScreen.route),
+        builder: (_) => HomeScreen(),
       ),
     };
 

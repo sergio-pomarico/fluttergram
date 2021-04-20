@@ -1,6 +1,7 @@
 library app.auth;
 
 import 'package:flutter/material.dart';
+import 'package:fluttergram/helpers/navigator.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
@@ -12,14 +13,15 @@ import 'package:fluttergram/helpers/validator.dart';
 import 'package:fluttergram/widgets/button.dart';
 
 import 'package:fluttergram/bloc/login/login_bloc.dart';
+import 'package:fluttergram/locator.dart';
 
 part 'login_view.dart';
 part 'signin_view.dart';
 part 'forgot_password.dart';
 part 'complete_info_view.dart';
 
-class AuthView extends StatelessWidget {
-  const AuthView({Key key}) : super(key: key);
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({Key key}) : super(key: key);
 
   static String route = '/auth';
   @override

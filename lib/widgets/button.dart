@@ -3,11 +3,16 @@ import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
 
 class Button extends StatelessWidget {
-  Button({@required this.text, @required this.onPress, Key key})
+  Button(
+      {@required this.text,
+      @required this.onPress,
+      this.disable = false,
+      Key key})
       : super(key: key);
 
   final String text;
   final void Function() onPress;
+  final bool disable;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +32,8 @@ class Button extends StatelessWidget {
               primary: Colors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
-              backgroundColor: primaryColor),
-          onPressed: onPress,
+              backgroundColor: !disable ? primaryColor : Color(0xFFFFAF91)),
+          onPressed: !disable ? onPress : null,
         ),
       ),
     );

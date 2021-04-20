@@ -2,33 +2,34 @@
 import 'package:flutter/material.dart';
 
 class NavigationService {
-  static void push({BuildContext context, String route, dynamic params}) {
-    Navigator.pushNamed(
-      context,
+  final GlobalKey<NavigatorState> navigatorKey =
+      new GlobalKey<NavigatorState>();
+
+  void push({BuildContext context, String route, dynamic params}) {
+    navigatorKey.currentState.pushNamed(
       route,
       arguments: params,
     );
   }
 
-  static void replace({BuildContext context, String route, dynamic params}) {
-    Navigator.pushReplacementNamed(
-      context,
+  void replace({String route, dynamic params}) {
+    navigatorKey.currentState.pushReplacementNamed(
       route,
       arguments: params,
     );
   }
 
-  static void removeHistory(BuildContext context) {
-    while (Navigator.canPop(context)) {
-      Navigator.pop(context);
+  void removeHistory() {
+    while (navigatorKey.currentState.canPop()) {
+      navigatorKey.currentState.pop();
     }
   }
 
-  static void popAndPush({BuildContext context, String route}) {
-    Navigator.popAndPushNamed(context, route);
+  void popAndPush({String route}) {
+    navigatorKey.currentState.popAndPushNamed(route);
   }
 
-  static void goBack(BuildContext context) {
-    Navigator.pop(context);
+  void goBack() {
+    navigatorKey.currentState.pop();
   }
 }

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/locator.dart';
 import 'package:fluttergram/screen/auth/auth_view.dart';
 import 'package:fluttergram/screen/walkthrough/walkthrough_view.dart';
 import 'package:fluttergram/helpers/navigator.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:fluttergram/bloc/auth/auth_bloc.dart';
 
 class RootScreen extends StatefulWidget {
   static String route = "/root";
@@ -16,24 +14,17 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootState extends State<RootScreen> {
+  final NavigationService navigator = locator<NavigationService>();
   Future<SharedPreferences> preferences = SharedPreferences.getInstance();
 
   @override
   void initState() {
     super.initState();
-    final authBloc = BlocProvider.of<AuthBloc>(context);
-    bool isAuthenticated = authBloc.state.authenticated;
-
     preferences.then((SharedPreferences prefs) {
       if (!prefs.containsKey('walkthrough_viewed')) {
-        NavigationService.replace(
-            context: context, route: WalkthroughScreen.route);
+        navigator.replace(route: WalkthroughScreen.route);
       } else {
-        if (isAuthenticated) {
-          //TODO go to Home
-        } else {
-          NavigationService.replace(context: context, route: LoginScreen.route);
-        }
+        navigator.replace(route: AuthScreen.route);
       }
     });
   }
