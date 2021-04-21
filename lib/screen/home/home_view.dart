@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
+import 'package:fluttergram/widgets/bottom_navbar.dart';
 
 class HomeScreen extends StatefulWidget {
-  static String route = "/login";
+  static String route = "/feed";
 
   _HomeState createState() => _HomeState();
 }
@@ -31,6 +32,7 @@ class _HomeState extends State<HomeScreen> {
         ),
         leading: SizedBox(),
       ),
+      bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.home),
       body: ScrollConfiguration(
         behavior: NeverGrowthScroll(),
         child: SingleChildScrollView(

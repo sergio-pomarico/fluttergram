@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/screen/profile/profile_view.dart';
 import 'package:fluttergram/screen/root/root_view.dart';
 
 import 'package:fluttergram/screen/walkthrough/walkthrough_view.dart';
@@ -25,6 +26,10 @@ class UIRouter {
       HomeScreen.route: MaterialPageRoute<dynamic>(
         settings: RouteSettings(name: HomeScreen.route),
         builder: (_) => HomeScreen(),
+      ),
+      ProfileScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: ProfileScreen.route),
+        builder: (_) => ProfileScreen(),
       ),
     };
 

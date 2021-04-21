@@ -23,6 +23,7 @@ class ImageFactory {
     double height,
     double width,
     BoxFit fit = BoxFit.contain,
+    Color color,
     AlignmentGeometry alignment = Alignment.center,
   }) =>
       SvgPicture.asset(
@@ -31,5 +32,6 @@ class ImageFactory {
         height: height,
         alignment: alignment,
         fit: fit,
+        color: color,
       );
 }
