@@ -30,7 +30,7 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
       {String email, String password}) async* {
     try {
       await repository.registerUserWithEmailPass(email.trim(), password.trim());
-      navigator.replace(route: HomeScreen.route);
+      navigator.replace(navigator.authNavigatorKey, route: HomeScreen.route);
     } catch (e) {
       print(e.toString());
     }
