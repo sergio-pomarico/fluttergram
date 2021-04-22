@@ -22,13 +22,16 @@ part 'forgot_password.dart';
 part 'complete_info_view.dart';
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({Key key}) : super(key: key);
+  AuthScreen({Key key}) : super(key: key);
+
+  final NavigationService navigator = locator<NavigationService>();
 
   static String route = '/auth';
   @override
   Widget build(BuildContext context) {
     return Navigator(
       initialRoute: LoginScreen.route,
+      key: navigator.authNavigatorKey,
       onGenerateRoute: authenticationNavStack,
     );
   }

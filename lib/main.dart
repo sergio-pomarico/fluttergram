@@ -42,13 +42,14 @@ class AppState extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
+  final NavigationService navigator = locator<NavigationService>();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fluttergram',
       theme: theme(),
-      navigatorKey: locator<NavigationService>().navigatorKey,
+      navigatorKey: navigator.navigatorKey,
       initialRoute: UIRouter.initialRoute,
       onGenerateRoute: UIRouter.generateRoute,
     );

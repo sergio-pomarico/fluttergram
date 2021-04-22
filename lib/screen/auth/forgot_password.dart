@@ -1,7 +1,7 @@
 part of app.auth;
 
 class ForgotPasswordScreen extends StatefulWidget {
-  static String route = "/forgot_password";
+  static String route = "${AuthScreen.route}/forgot_password";
 
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }

@@ -35,7 +35,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
   void goToLogin() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString('walkthrough_viewed', 'true');
-    Navigator.pushNamed(context, LoginScreen.route);
+    Navigator.pushNamed(context, AuthScreen.route);
   }
 
   @override

@@ -31,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       {String email, String password}) async* {
     try {
       await repository.loginWithEmailAndPassword(email.trim(), password.trim());
-      navigator.replace(route: HomeScreen.route);
+      navigator.replace(navigator.navigatorKey, route: HomeScreen.route);
     } catch (e) {
       print(e.toString());
     }

@@ -3,10 +3,6 @@ part of app.auth;
 class CompleteUserInfoScreen extends StatefulWidget {
   static String route = "/complete_info";
 
-  void goTo(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
-  }
-
   _CompleteUserInfoState createState() => _CompleteUserInfoState();
 }
 

@@ -22,9 +22,10 @@ class _RootState extends State<RootScreen> {
     super.initState();
     preferences.then((SharedPreferences prefs) {
       if (!prefs.containsKey('walkthrough_viewed')) {
-        navigator.replace(route: WalkthroughScreen.route);
+        navigator.replace(navigator.navigatorKey,
+            route: WalkthroughScreen.route);
       } else {
-        navigator.replace(route: AuthScreen.route);
+        navigator.replace(navigator.navigatorKey, route: AuthScreen.route);
       }
     });
   }

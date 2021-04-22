@@ -1,7 +1,7 @@
 part of app.auth;
 
 class LoginScreen extends StatefulWidget {
-  static String route = "/login";
+  static String route = "${AuthScreen.route}/login";
 
   _LoginState createState() => _LoginState();
 }
@@ -18,7 +18,7 @@ class _LoginState extends State<LoginScreen> {
   bool get isPopulated => email.text.isNotEmpty && password.text.isNotEmpty;
 
   void goTo(String routeName) {
-    navigator.push(route: routeName);
+    navigator.push(navigator.authNavigatorKey, route: routeName);
   }
 
   void validateEmail(String _) {
