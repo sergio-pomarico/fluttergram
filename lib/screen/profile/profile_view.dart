@@ -1,8 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttergram/bloc/login/login_bloc.dart';
+import 'package:fluttergram/bloc/profile/profile_bloc.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
 import 'package:fluttergram/widgets/bottom_navbar.dart';
+import 'package:fluttergram/widgets/camera.dart';
 import 'package:fluttergram/widgets/profile_menu.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -12,13 +17,31 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileState extends State<ProfileScreen> {
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-  String emailError;
-  String passwordError;
+  String photo;
+  LoginBloc loginBloc;
+  ProfileBloc profileBloc;
+  User user;
 
-  void goTo(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
+  void launchCamera(BuildContext context) async {
+    photo = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Camera();
+      },
+    );
+    if (photo != null) {
+      profileBloc.add(ProfileImage(photo));
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    loginBloc = BlocProvider.of<LoginBloc>(context);
+    profileBloc = BlocProvider.of<ProfileBloc>(context);
+    profileBloc.add(CurrentUser());
+    user = profileBloc.state.user;
+    super.initState();
   }
 
   @override
@@ -53,21 +76,36 @@ class _ProfileState extends State<ProfileScreen> {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      SizedBox(
-                        height: getProportionateScreenHeight(128),
-                        width: getProportionateScreenWidth(128),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: Color(0xFFF5F6F9),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.photo_rounded,
-                            color: textColor,
-                            size: 48,
+                      if (user.photoURL != null)
+                        SizedBox(
+                          height: getProportionateScreenHeight(128),
+                          width: getProportionateScreenWidth(128),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: NetworkImage(user.photoURL),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      if (user?.photoURL == null)
+                        SizedBox(
+                          height: getProportionateScreenHeight(128),
+                          width: getProportionateScreenWidth(128),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xFFF5F6F9),
+                            ),
+                            child: Icon(
+                              Icons.photo_rounded,
+                              color: textColor,
+                              size: 48,
+                            ),
+                          ),
+                        ),
                       Positioned(
                         right: 4,
                         bottom: 0,
@@ -88,7 +126,7 @@ class _ProfileState extends State<ProfileScreen> {
                               Icons.add_a_photo,
                               color: textColor,
                             ),
-                            onPressed: () {},
+                            onPressed: () => launchCamera(context),
                           ),
                         ),
                       )

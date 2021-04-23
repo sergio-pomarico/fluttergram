@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:fluttergram/screen/home/home_view.dart';
-import 'package:fluttergram/repository/user_repository.dart';
+import 'package:fluttergram/repository/user.dart';
 import 'package:fluttergram/locator.dart';
 import 'package:fluttergram/helpers/navigator.dart';
 

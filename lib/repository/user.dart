@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import './error_codes.dart';
+import 'error_codes.dart';
 
 class UserRepository {
   FirebaseAuth firebaseAuth;

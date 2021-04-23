@@ -5,7 +5,7 @@ import 'package:fluttergram/locator.dart';
 import 'package:fluttergram/helpers/navigator.dart';
 import 'package:fluttergram/screen/home/home_view.dart';
 
-import 'package:fluttergram/repository/user_repository.dart';
+import 'package:fluttergram/repository/user.dart';
 import 'package:meta/meta.dart';
 
 part 'login_event.dart';

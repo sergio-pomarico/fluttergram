@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fluttergram/repository/user_repository.dart';
+import 'package:fluttergram/repository/user.dart';
 
 import 'package:fluttergram/ui_shared/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +36,9 @@ class AppState extends StatelessWidget {
       ),
       BlocProvider<SigninBloc>(
         create: (_) => SigninBloc(userRepository),
+      ),
+      BlocProvider<ProfileBloc>(
+        create: (_) => ProfileBloc(userRepository),
       ),
     ], child: MyApp());
   }
