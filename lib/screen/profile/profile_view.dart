@@ -22,6 +22,10 @@ class _ProfileState extends State<ProfileScreen> {
   ProfileBloc profileBloc;
   User user;
 
+  void logout() {
+    loginBloc.add(Logout());
+  }
+
   void launchCamera(BuildContext context) async {
     photo = await showDialog(
       context: context,
@@ -31,6 +35,7 @@ class _ProfileState extends State<ProfileScreen> {
     );
     if (photo != null) {
       profileBloc.add(ProfileImage(photo));
+      user = profileBloc.state.user;
       setState(() {});
     }
   }
@@ -39,8 +44,8 @@ class _ProfileState extends State<ProfileScreen> {
   void initState() {
     loginBloc = BlocProvider.of<LoginBloc>(context);
     profileBloc = BlocProvider.of<ProfileBloc>(context);
-    profileBloc.add(CurrentUser());
-    user = profileBloc.state.user;
+    user = loginBloc.state.user;
+    print(loginBloc.state.user);
     super.initState();
   }
 
@@ -76,7 +81,7 @@ class _ProfileState extends State<ProfileScreen> {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      if (user.photoURL != null)
+                      if (user?.photoURL != null)
                         SizedBox(
                           height: getProportionateScreenHeight(128),
                           width: getProportionateScreenWidth(128),
@@ -158,7 +163,7 @@ class _ProfileState extends State<ProfileScreen> {
               ProfileMenu(
                 text: "Log Out",
                 icon: "assets/icons/logout.svg",
-                press: () {},
+                press: logout,
               ),
             ],
           ),

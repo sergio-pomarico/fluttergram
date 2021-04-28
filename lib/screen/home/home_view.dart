@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/repository/database.dart';
 import 'package:fluttergram/ui_shared/size_config.dart';
 import 'package:fluttergram/ui_shared/behavior.dart';
 import 'package:fluttergram/widgets/bottom_navbar.dart';
@@ -10,14 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeState extends State<HomeScreen> {
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-  String emailError;
-  String passwordError;
-
-  void goTo(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
-  }
+  DatabaseRepository database = DatabaseRepository();
 
   @override
   Widget build(BuildContext context) {

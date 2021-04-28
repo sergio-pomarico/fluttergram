@@ -2,6 +2,7 @@
     package="co.codeo.fluttergram">
    <application
         android:label="fluttergram"
+        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
