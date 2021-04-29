@@ -15,6 +15,8 @@ class BottomNavBar extends StatelessWidget {
 
   final MenuState selectedMenu;
 
+  void onPressCreatePost(BuildContext context) {}
+
   @override
   Widget build(BuildContext context) {
     final Color inActiveIconColor = Color(0xFFB6B6B6);
@@ -60,6 +62,23 @@ class BottomNavBar extends StatelessWidget {
                     : inActiveIconColor,
               ),
               onPressed: () {},
+            ),
+            InkWell(
+              onTap: () => onPressCreatePost(context),
+              child: SizedBox(
+                height: getProportionateScreenHeight(48),
+                width: getProportionateScreenWidth(48),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: primaryColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
             IconButton(
               icon: ImageFactory.svg(

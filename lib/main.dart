@@ -40,6 +40,9 @@ class AppState extends StatelessWidget {
       BlocProvider<ProfileBloc>(
         create: (_) => ProfileBloc(userRepository),
       ),
+      BlocProvider<FeedBloc>(
+        create: (_) => FeedBloc(userRepository),
+      ),
     ], child: MyApp());
   }
 }

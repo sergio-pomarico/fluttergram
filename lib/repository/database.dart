@@ -16,9 +16,14 @@ class DatabaseRepository {
     return ref.add(data);
   }
 
-  Future<DocumentSnapshot> read(String collection, String document) {
+  Future<DocumentSnapshot> readDocuments(String collection, String document) {
     CollectionReference ref = getReference(collection);
     return ref.doc(document).get();
+  }
+
+  Future<QuerySnapshot> readCollections(String collection) {
+    CollectionReference ref = getReference(collection);
+    return ref.get();
   }
 
   Future<void> update(String collection, String document, dynamic data) {

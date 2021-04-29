@@ -45,7 +45,6 @@ class _ProfileState extends State<ProfileScreen> {
     loginBloc = BlocProvider.of<LoginBloc>(context);
     profileBloc = BlocProvider.of<ProfileBloc>(context);
     user = loginBloc.state.user;
-    print(loginBloc.state.user);
     super.initState();
   }
 

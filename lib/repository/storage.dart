@@ -25,10 +25,8 @@ class StorageRepository {
   Future<void> uploadFile(String path, String filePath) async {
     Reference ref = setReference(path);
     File file = File(filePath);
-    dynamic uploadFile;
     try {
-      uploadFile = await ref.putFile(file);
-      print(uploadFile);
+      await ref.putFile(file);
     } on FirebaseException catch (e) {
       print(e.toString());
     }
