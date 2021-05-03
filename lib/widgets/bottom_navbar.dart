@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergram/screen/home/home_view.dart';
+import 'package:fluttergram/screen/messages/messages_view.dart';
 import 'package:fluttergram/screen/profile/profile_view.dart';
 import 'package:fluttergram/ui_shared/images.dart';
 import 'package:fluttergram/ui_shared/constants.dart';
@@ -14,8 +15,6 @@ class BottomNavBar extends StatelessWidget {
   }) : super(key: key);
 
   final MenuState selectedMenu;
-
-  void onPressCreatePost(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -63,23 +62,6 @@ class BottomNavBar extends StatelessWidget {
               ),
               onPressed: () {},
             ),
-            InkWell(
-              onTap: () => onPressCreatePost(context),
-              child: SizedBox(
-                height: getProportionateScreenHeight(48),
-                width: getProportionateScreenWidth(48),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: primaryColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
             IconButton(
               icon: ImageFactory.svg(
                 'assets/icons/chat.svg',
@@ -89,7 +71,8 @@ class BottomNavBar extends StatelessWidget {
                     ? primaryColor
                     : inActiveIconColor,
               ),
-              onPressed: () {},
+              onPressed: () =>
+                  Navigator.pushNamed(context, MessageScreen.route),
             ),
             IconButton(
               icon: ImageFactory.svg(

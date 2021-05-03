@@ -53,13 +53,7 @@ class UserRepository {
 
   Future<User> loginWithEmailAndPassword(String email, String password) async {
     String authError = '';
-    try {
-      var authresult = await firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return authresult.user;
-    } on FirebaseAuthException catch (e) {
+    try {} on FirebaseAuthException catch (e) {
       switch (e.code) {
         case ErrorCodes.ERROR_C0DE_NETWORK_ERROR:
           authError = ErrorMessages.ERROR_C0DE_NETWORK_ERROR;

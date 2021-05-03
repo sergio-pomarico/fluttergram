@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/screen/messages/messages_view.dart';
 import 'package:fluttergram/screen/profile/profile_view.dart';
 import 'package:fluttergram/screen/root/root_view.dart';
 
@@ -30,6 +31,10 @@ class UIRouter {
       ProfileScreen.route: MaterialPageRoute<dynamic>(
         settings: RouteSettings(name: ProfileScreen.route),
         builder: (_) => ProfileScreen(),
+      ),
+      MessageScreen.route: MaterialPageRoute<dynamic>(
+        settings: RouteSettings(name: MessageScreen.route),
+        builder: (_) => MessageScreen(),
       ),
     };
 
