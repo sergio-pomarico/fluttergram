@@ -1,0 +1,44 @@
+{
+    "messages":[
+        {
+            "Name" : "Jose",
+            "Message" : "Hola, como estas? · Feb 03",
+            "Group" : false,
+            "Connect" : true,
+            "image1":"https://lavozdgo.com/wp-content/uploads/2020/06/J-BALVIN.jpg",
+            "image2":"https://cdn-3.expansion.mx/dims4/default/9ed8a14/2147483647/strip/true/crop/1080x1350+0+0/resize/1800x2250!/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F96%2F2f%2Fcd1c0cb7492587adec015d6ad4d2%2Fjlo.jpg"
+        },
+        {
+            "Name" : "Jennifer",
+            "Message" : "Oeeeeeee · Feb 02",
+            "Group" : false,
+            "Connect" : true,
+            "image1":"https://cdn-3.expansion.mx/dims4/default/9ed8a14/2147483647/strip/true/crop/1080x1350+0+0/resize/1800x2250!/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F96%2F2f%2Fcd1c0cb7492587adec015d6ad4d2%2Fjlo.jpg",
+            "image2":"https://lavozdgo.com/wp-content/uploads/2020/06/J-BALVIN.jpg"
+        },
+        {
+            "Name" : "La Crica",
+            "Message" : "Juan: Oeee que se dice? · Feb 01",
+            "Group" : true,
+            "Connect" : false,
+            "image1":"https://cdn-3.expansion.mx/dims4/default/9ed8a14/2147483647/strip/true/crop/1080x1350+0+0/resize/1800x2250!/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F96%2F2f%2Fcd1c0cb7492587adec015d6ad4d2%2Fjlo.jpg",
+            "image2":"https://lavozdgo.com/wp-content/uploads/2020/06/J-BALVIN.jpg"
+        },
+        {
+            "Name" : "Enrique Iglesias",
+            "Message" : "Juan: Oeee que se dice? · Feb 01",
+            "Group" : true,
+            "Connect" : true,
+            "image1":"https://static4.abc.es/media/cultura/2020/10/19/enri-U81688035543tZI-620x349@abc.jpg",
+            "image2":"https://yt3.ggpht.com/ytc/AAUvwnhwPOTM57hrtBQb4tZw78MI8_V8frqcqlAvAY5CTeE=s900-c-k-c0x00ffffff-no-rj"
+        },
+        {
+            "Name" : "Rosalia",
+            "Message" : "Juan: Oeee que se dice? · Feb 01",
+            "Group" : true,
+            "Connect" : false,
+            "image1":"https://yt3.ggpht.com/ytc/AAUvwnhwPOTM57hrtBQb4tZw78MI8_V8frqcqlAvAY5CTeE=s900-c-k-c0x00ffffff-no-rj",
+            "image2":""
+        }
+    ]
+}

@@ -29,7 +29,6 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
   Stream<SigninState> _mapSignInWithCredentialsPressedToState(
       {String email, String password}) async* {
     try {
-      await repository.registerUserWithEmailPass(email.trim(), password.trim());
       navigator.replace(navigator.authNavigatorKey, route: HomeScreen.route);
     } catch (e) {
       print(e.toString());
