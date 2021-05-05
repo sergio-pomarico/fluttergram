@@ -74,6 +74,7 @@ class _ForgotPasswordState extends State<ForgotPasswordScreen> {
                       controller: email,
                       icon: Icons.email_outlined,
                       error: emailError,
+                      onChange: validateEmail,
                     ),
                     SizedBox(height: SizeConfig.screenHeight * 0.15),
                     Button(text: 'Send', onPress: () {}),

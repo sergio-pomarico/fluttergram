@@ -22,6 +22,7 @@ class Input extends StatefulWidget {
       this.formatters,
       this.type,
       this.suffix,
+      this.multiline = false,
       this.textInputFormatterType = TextInputFormatterType.none,
       Key key})
       : super(key: key);
@@ -42,6 +43,7 @@ class Input extends StatefulWidget {
   final void Function(String) onChange;
   final List<TextInputFormatter> formatters;
   final TextInputType type;
+  final bool multiline;
   final TextInputFormatterType textInputFormatterType;
 
   InputState createState() => InputState();
@@ -112,6 +114,7 @@ class InputState extends State<Input> {
       obscureText: widget.isPassword,
       enableSuggestions: widget.enableSuggestions,
       decoration: getDecorator(),
+      maxLines: widget.multiline ? 5 : 1,
       inputFormatters: <TextInputFormatter>[
         ...widget.formatters ?? <TextInputFormatter>[],
         if (widget.type == TextInputType.phone)

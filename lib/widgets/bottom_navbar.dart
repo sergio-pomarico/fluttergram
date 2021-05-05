@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergram/helpers/navigator.dart';
+import 'package:fluttergram/locator.dart';
+import 'package:fluttergram/screen/create/create_post_view.dart';
 import 'package:fluttergram/screen/home/home_view.dart';
 import 'package:fluttergram/screen/profile/profile_view.dart';
 import 'package:fluttergram/ui_shared/images.dart';
@@ -8,17 +11,21 @@ import 'package:fluttergram/ui_shared/size_config.dart';
 enum MenuState { home, favourite, message, profile }
 
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({
+  BottomNavBar({
     Key key,
     @required this.selectedMenu,
   }) : super(key: key);
 
   final MenuState selectedMenu;
+  final NavigationService navigator = locator<NavigationService>();
 
-  void onPressCreatePost(BuildContext context) {}
+  void onPressCreatePost() {
+    navigator.push(navigator.navigatorKey, route: CreatePostScreen.route);
+  }
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final Color inActiveIconColor = Color(0xFFB6B6B6);
     return Container(
       padding: EdgeInsets.symmetric(vertical: 14),
@@ -50,7 +57,8 @@ class BottomNavBar extends StatelessWidget {
                     ? primaryColor
                     : inActiveIconColor,
               ),
-              onPressed: () => Navigator.pushNamed(context, HomeScreen.route),
+              onPressed: () => navigator.push(navigator.navigatorKey,
+                  route: HomeScreen.route),
             ),
             IconButton(
               icon: ImageFactory.svg(
@@ -64,7 +72,7 @@ class BottomNavBar extends StatelessWidget {
               onPressed: () {},
             ),
             InkWell(
-              onTap: () => onPressCreatePost(context),
+              onTap: onPressCreatePost,
               child: SizedBox(
                 height: getProportionateScreenHeight(48),
                 width: getProportionateScreenWidth(48),
@@ -100,8 +108,8 @@ class BottomNavBar extends StatelessWidget {
                     ? primaryColor
                     : inActiveIconColor,
               ),
-              onPressed: () =>
-                  Navigator.pushNamed(context, ProfileScreen.route),
+              onPressed: () => navigator.push(navigator.navigatorKey,
+                  route: ProfileScreen.route),
             ),
           ],
         ),
